@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +22,25 @@
 <!--===============================================================================================-->
 </head>
 <body>
+    
+    
+    <div>
+        <form action="index.php">
+            <label for="plecare"> Oras Plecare </label>
+            <input id="plecare" type="text" name="Plecare">
+            <label> Oras Sosire </label>
+            <input type="text" name="Destinatie">
+            <label>Data </label>
+            <input type="text" name="Data">
+            <button type="submit"  value="Submit"/>
+
+            
+        </form>
         
+        
+    </div>    
+    
+    
         <div class="limiter">
                 <div class="container-table100">
                         <div class="wrap-table100">
@@ -41,8 +58,6 @@
                                                         </thead>
                                                 </table>
                                         </div>
-
-
 <?php
   $servername = "193.200.126.13";
   $username = "stepit2";
@@ -55,14 +70,14 @@
       die("Connection failed: " . $conn->connect_error);
   }
 
-$orasPlecare = $_GET['plecare'];
-$orasDestinatie = $_GET['destinatie'];
-$dataPlecare = $_GET['data']; 
+$orasPlecare = $_GET['Plecare'];
+$orasDestinatie = $_GET['Destinatie'];
+$dataPlecare = $_GET['Data']; 
 
 
   # execute a query and output its results
   $sql = "SELECT id, oras_Plecare as Plecare, oras_sosire as Destinatie, ora_Plecare as Ora, Pret FROM `Curse` WHERE 
-Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_GET['destinatie']."' AND zi_a_saptamanii = DAYOFWEEK ('".$dataPlecare."')  ORDER BY oras_sosire, zi_a_saptamanii
+Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_GET['Destinatie']."' AND zi_a_saptamanii = DAYOFWEEK ('".$dataPlecare."')  ORDER BY oras_sosire, zi_a_saptamanii
 "; ?>
 
                                 <div class="table100-body js-pscroll">
@@ -75,7 +90,12 @@ Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_GE
       while($row = $result->fetch_assoc()) {?>
 
                 <tr class="row100 body">
-                        <td class="cell100 column1"><?php echo $row["id"]?></td>
+                        
+                    
+                    <td  class="cell100 column1"><a href="rezervare.php?IdCursa=<?php echo $row['id']?>" ><?php echo $row["id"]?></a></td>
+                        
+                      
+                                                        
                         <td class="cell100 column2"><?php echo $row["Plecare"]?></td>
                         <td class="cell100 column3"><?php echo $row["Destinatie"] ?></td>
                         <td class="cell100 column4"><?php echo $row["Ora"]?></td>
