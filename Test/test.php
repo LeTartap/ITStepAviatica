@@ -25,7 +25,7 @@
     
     
     <div>
-        <form action="index.php">
+        <form action="index.php" method="POST">
             <label for="plecare"> Oras Plecare </label>
             <input id="plecare" type="text" name="Plecare">
             <label> Oras Sosire </label>
@@ -41,23 +41,23 @@
     </div>    
     
     
-        <div class="limiter">
-                <div class="container-table100">
-                        <div class="wrap-table100">
-                                <div class="table100 ver1 m-b-110">
-                                        <div class="table100-head">
-                                                <table>
-                                                        <thead>
-                                                                <tr class="row100 head">
-                                                                        <th class="cell100 column1">Numar Cursa</th>
-                                                                        <th class="cell100 column2">Plecare</th>
-                                                                        <th class="cell100 column3">Sosire</th>
-                                                                        <th class="cell100 column4">Ora</th>
-                                                                        <th class="cell100 column5">Pret</th>
-                                                                </tr>
-                                                        </thead>
-                                                </table>
-                                        </div>
+<div class="limiter">
+        <div class="container-table100">
+                <div class="wrap-table100">
+                        <div class="table100 ver1 m-b-110">
+                                <div class="table100-head">
+                                        <table>
+                                                <thead>
+                                                        <tr class="row100 head">
+                                                                <th class="cell100 column1">Numar Cursa</th>
+                                                                <th class="cell100 column2">Plecare</th>
+                                                                <th class="cell100 column3">Sosire</th>
+                                                                <th class="cell100 column4">Ora</th>
+                                                                <th class="cell100 column5">Pret</th>
+                                                        </tr>
+                                                </thead>
+                                        </table>
+                                </div>
 <?php
   $servername = "193.200.126.13";
   $username = "stepit2";
@@ -70,19 +70,19 @@
       die("Connection failed: " . $conn->connect_error);
   }
 
-$orasPlecare = $_GET['Plecare'];
-$orasDestinatie = $_GET['Destinatie'];
-$dataPlecare = $_GET['Data']; 
+$orasPlecare = $_POST['Plecare'];
+$orasDestinatie = $_POST['Destinatie'];
+$dataPlecare = $_POST['Data']; 
 
 
   # execute a query and output its results
   $sql = "SELECT id, oras_Plecare as Plecare, oras_sosire as Destinatie, ora_Plecare as Ora, Pret FROM `Curse` WHERE 
-Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_GET['Destinatie']."' AND zi_a_saptamanii = DAYOFWEEK ('".$dataPlecare."')  ORDER BY oras_sosire, zi_a_saptamanii
-"; ?>
+Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_POST['Destinatie']."' AND zi_a_saptamanii = DAYOFWEEK ('".$dataPlecare."')  ORDER BY oras_sosire, zi_a_saptamanii"; 
+?>
 
-                                <div class="table100-body js-pscroll">
-                                                <table>
-                                                        <tbody>
+<div class="table100-body js-pscroll">
+                <table>
+                        <tbody>
 <?php
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
@@ -110,10 +110,10 @@ Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_GE
   }
 ?>
 
-                                                        </tbody>
-                                                </table>
-                                        </div>
-                                </div>
+                        </tbody>
+                </table>
+        </div>
+</div>
                                 
 
 
