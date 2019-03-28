@@ -25,7 +25,7 @@
 <body>
     
     
-    <div>
+    <div id="formular1">
         <form action="index.php">
             <label for="plecare"> Oras Plecare </label>
             <input id="plecare" type="text" name="Plecare">
@@ -34,7 +34,8 @@
             <label>Data </label>
             <input type="text" name="Data">
             
-            <button type="submit"  value="Submit"/>
+            
+            <input type="submit"  value="Submit" name="Submit">
 
             
         </form>
@@ -63,6 +64,7 @@
 
 
 <?php
+echo "bau";
   $servername = "193.200.126.13";
   $username = "stepit2";
   $password = "s73pi7-2018";
