@@ -23,25 +23,71 @@
 <!--===============================================================================================-->
 </head>
 <body>
+<?php
+  $servername = "193.200.126.13";
+  $username = "stepit2";
+  $password = "s73pi7-2018";
+  $dbname = "stepit_claudiu";
+
+  # connect to the database
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+  ?>    
     
-    
-    <div id="formular1">
-        <form action="index.php">
+        <div class="formular1">
+        <form action="index.php" method='POST' >
+
             <label for="plecare"> Oras Plecare </label>
-            <input id="plecare" type="text" name="Plecare">
+            <br>
+            <?php
+            $sql='SELECT `oras_Plecare` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_Plecare`';
+  $result = $conn->query($sql);
+  ?>
+            
+            <select name = "Plecare">
+                
+                
+                <?php
+                if ($result->num_rows > 0) 
+                    {
+                           while($row = $result->fetch_assoc()) {                                                                        
+                            echo '<option value="'.$row["oras_Plecare"].'">'.$row["oras_Plecare"].'</option>';                                                       
+                        }
+                    }
+                ?>                                                               
+            </select>
+            <br>
+          <?php
+            $sql='SELECT `oras_sosire` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_sosire`';
+  $result = $conn->query($sql);
+  ?>
             <label> Oras Sosire </label>
-            <input type="text" name="Destinatie">
+            <br>
+            <select name = "Destinatie">
+                <<?php
+                if ($result->num_rows > 0) 
+                    {
+                        while($row = $result->fetch_assoc()) {                                                                        
+                            echo '<option value="'.$row["oras_sosire"].'">'.$row["oras_sosire"].'</option>';                                                       
+                        }
+                    }
+                ?>            
+            </select>
+            <br>
+            
+            
             <label>Data </label>
-            <input type="text" name="Data">
+            <input type="date" name="Data">
             
-            
-            <input type="submit"  value="Submit" name="Submit">
+            <button type="submit"  value="Submit"/>
 
             
         </form>
         
         
-    </div>    
+        </div>
     
     
         <div class="limiter">
@@ -63,27 +109,16 @@
                                         </div>
 
 
-<?php
-echo "bau";
-  $servername = "193.200.126.13";
-  $username = "stepit2";
-  $password = "s73pi7-2018";
-  $dbname = "stepit_claudiu";
+  <?php
 
-  # connect to the database
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
 
-$orasPlecare = $_GET['Plecare'];
-$orasDestinatie = $_GET['Destinatie'];
-$dataPlecare = $_GET['Data']; 
-
+$orasPlecare = $_POST['Plecare'];
+$orasDestinatie = $_POST['Destinatie'];
+$dataPlecare = $_POST['Data']; 
 
   # execute a query and output its results
   $sql = "SELECT id, oras_Plecare as Plecare, oras_sosire as Destinatie, ora_Plecare as Ora, Pret FROM `Curse` WHERE 
-Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_GET['Destinatie']."' AND zi_a_saptamanii = DAYOFWEEK ('".$dataPlecare."')  ORDER BY oras_sosire, zi_a_saptamanii
+Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_POST['Destinatie']."' AND zi_a_saptamanii = DAYOFWEEK ('".$dataPlecare."')  ORDER BY oras_sosire, zi_a_saptamanii
 "; ?>
 
                                 <div class="table100-body js-pscroll">
@@ -98,14 +133,13 @@ Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_GE
                 <tr class="row100 body">
                         
                     
-                    <td  class="cell100 column1"><a href="rezervare.php?IdCursa=<?php echo $row['id']?>" ><?php echo $row["id"]?></a></td>
-                        
-                      
-                                                        
-                        <td class="cell100 column2"><?php echo $row["Plecare"]?></td>
-                        <td class="cell100 column3"><?php echo $row["Destinatie"] ?></td>
-                        <td class="cell100 column4"><?php echo $row["Ora"]?></td>
-                        <td class="cell100 column5"><?php echo $row["Pret"]?></td>
+                    <td  class="cell100 column1"><a href="rezervare.php?IdCursa=<?php echo $row['id']?>" ><?php echo $row["id"]?></a></td>                                                                      
+                    
+                    <td class="cell100 column2"><?php echo $row["Plecare"]?></td>
+                    <td class="cell100 column3"><?php echo $row["Destinatie"] ?></td>
+                    <td class="cell100 column4"><?php echo $row["Ora"]?></td>
+                    <td class="cell100 column5"><?php echo $row["Pret"]?></td>
+                    
                 </tr>
       <?php
 }  } else { ?>
