@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,9 @@
         <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="css/util.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">       
+        
+        
 <!--===============================================================================================-->
 
 <script>
@@ -52,8 +53,8 @@ function alertInvalid() {
             <br>
             <?php
             $sql='SELECT `oras_Plecare` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_Plecare`';
-  $result = $conn->query($sql);
-  ?>
+            $result = $conn->query($sql);
+            ?>
             
             <select name = "Plecare">
                 

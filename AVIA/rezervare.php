@@ -18,8 +18,8 @@
 <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="css/util.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/1util.css">
+        <link rel="stylesheet" type="text/css" href="css/1main.css">
 <!--===============================================================================================-->
 
 
@@ -49,12 +49,24 @@ function invalidDB() {
          <div>
           <form action='rezervare.php' method='GET'>
                                                 
-                            <label> Nume </label> 
-                            <input type="text" name="nume">
-                            <label> Prenume </label>
-                            <input type="text" name="prenume">
-                            <label> CNP </label>
-                            <input type="text" name="cnp">
+
+				<div class="wrap-input100 validate-input" data-validate="Last name is required">
+					<span class="label-input100">Your Last Name</span>
+					<input class="input100" type="text" name="nume" placeholder="Enter your last name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="First name is required">
+					<span class="label-input100">Your First Name</span>
+					<input class="input100" type="text" name="prenume" placeholder="Enter your first name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="First name is required">
+					<span class="label-input100">Your First Name</span>
+					<input class="input100" type="text" name="cnp" placeholder="CNP">
+					<span class="focus-input100"></span>
+				</div>
                             <input type="hidden" name="IdCursa" value="<?php echo $_GET['IdCursa']; ?>">                            
                             <input type='submit' />                          
                             
@@ -86,7 +98,6 @@ $cnp=$_GET['cnp'];
 
 //validare inceput
 if( isset($id) AND isset($nume) AND isset($prenume) AND isset($cnp)) {
-echo 'pas1';
   # execute a query and output its results
 if(!(ctype_alpha($nume)&&$nume!="" && ctype_alpha($prenume) && $prenume!="" && ctype_digit($cnp)&& $cnp!=""))
 {
