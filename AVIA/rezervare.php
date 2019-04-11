@@ -21,6 +21,24 @@
         <link rel="stylesheet" type="text/css" href="css/util.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+
+
+
+<script>
+function alertInvalid() {
+  alert("Date invalide!");
+}
+
+
+function validDB(){
+    alert("Rezervare efectuata cu succes!");
+}
+function invalidDB() {
+  alert("Nu s-a putut face conexiunea cu baza de date!");
+}
+</script>
+<!--===============================================================================================-->
 </head>
 <body>
     
@@ -64,22 +82,31 @@ $id = $_GET['IdCursa'];
 $nume=$_GET['nume'];
 $prenume=$_GET['prenume'];
 $cnp=$_GET['cnp'];
-echo $id;
-echo $nume;
-echo $prenume;
-echo $cnp;
+
+
+//validare inceput
 if( isset($id) AND isset($nume) AND isset($prenume) AND isset($cnp)) {
 echo 'pas1';
   # execute a query and output its results
-
-$sql = "INSERT INTO `stepit_claudiu`.`Rezervare` (`IdCursa`, `Nume`, `Prenume`, `Cnp`) 
-        VALUES (".$_GET['IdCursa']." , '".$nume."', '".$prenume."', '".$cnp."');";
-
-  $result = $conn->query($sql);
+if(!(ctype_alpha($nume)&&$nume!="" && ctype_alpha($prenume) && $prenume!="" && ctype_digit($cnp)&& $cnp!=""))
+{
+    echo '<script type="text/javascript"> alertInvalid()</script>';    
 }
-  //if ($result->num_rows > 0) {
-      // output data of each row
-     // while($row = $result->fetch_assoc()) {?>
+else{    
+    $sql = "INSERT INTO `stepit_claudiu`.`Rezervare` (`IdCursa`, `Nume`, `Prenume`, `Cnp`) 
+            VALUES (".$_GET['IdCursa']." , '".$nume."', '".$prenume."', '".$cnp."');";
+
+      $result = $conn->query($sql);
+      if($result){
+          echo('<script type="text/javascript"> validDB() </script>');
+      }
+      else{
+          echo('<script type="text/javascript"> invalidDB() </script>');
+      }
+    }
+    //validare sfarsit
+}
+?>
 
                
       <?php

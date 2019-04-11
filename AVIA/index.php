@@ -21,6 +21,15 @@
         <link rel="stylesheet" type="text/css" href="css/util.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+<script>
+function alertInvalid() {
+  alert("Data invalida!");
+}
+</script>
+
+<!--===============================================================================================-->
+
 </head>
 <body>
 <?php
@@ -111,19 +120,25 @@
 
   <?php
 
-
 $orasPlecare = $_POST['Plecare'];
 $orasDestinatie = $_POST['Destinatie'];
 $dataPlecare = $_POST['Data']; 
+
+//$dataPlecare="sdsd";
+if ($dataPlecare==""&&isset($dataPlecare)) {
+    echo '<script type="text/javascript"> alertInvalid()</script>';
+}
+
+
 
   # execute a query and output its results
   $sql = "SELECT id, oras_Plecare as Plecare, oras_sosire as Destinatie, ora_Plecare as Ora, Pret FROM `Curse` WHERE 
 Valabilitate = 1 AND oras_Plecare = '".$orasPlecare."' AND oras_sosire = '".$_POST['Destinatie']."' AND zi_a_saptamanii = DAYOFWEEK ('".$dataPlecare."')  ORDER BY oras_sosire, zi_a_saptamanii
 "; ?>
 
-                                <div class="table100-body js-pscroll">
-                                                <table>
-                                                        <tbody>
+<div class="table100-body js-pscroll">
+                <table>
+                        <tbody>
 <?php
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
