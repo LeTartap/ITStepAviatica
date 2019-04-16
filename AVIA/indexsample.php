@@ -47,44 +47,36 @@
                                 $sql='SELECT `oras_Plecare` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_Plecare`';
                                 $result = $conn->query($sql);
                                 ?>
-				<span class="contact100-form-title">
-					AVIA
-				</span>
+                                        <span class="contact100-form-title">
+                                                AVIA
+                                        </span>
 
 				
                                 
-				<div class="wrap-input100 validate-input">
-                                        <span class="label-input100">Data plecare</span>
-                                        <input class="input100" type="date" name="Data">
-					<span class="focus-input100"></span>
-				</div>
+                                        <div class="wrap-input100 validate-input">
+                                                <span class="label-input100">Data plecare</span>
+                                                <input class="input100" type="date" name="Data">
+                                                <span class="focus-input100"></span>
+                                        </div>
 
                             		<div class="wrap-input100 input100-select">
                                             <span class="label-input100">Plecari</span>
                                                 <div>
-						<select class="selection-2" name="Plecare">
-                                                <?php
-                                                    if ($result->num_rows > 0) 
-                                                        {
-                                                               while($row = $result->fetch_assoc()) {                                                                        
-                                                                echo '<option value="'.$row["oras_Plecare"].'">'.$row["oras_Plecare"].'</option>';                                                       
+                                                    <select class="selection-2" name="Plecare">
+                                                    <?php
+                                                        if ($result->num_rows > 0) 
+                                                            {
+                                                                   while($row = $result->fetch_assoc()) {                                                                        
+                                                                    echo '<option value="'.$row["oras_Plecare"].'">'.$row["oras_Plecare"].'</option>';                                                       
+                                                                }
                                                             }
-                                                        }
-                                                    ?>                                                               
-                                                </select>
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
+                                                        ?>                                                               
+                                                    </select>
                                                 </div>
-					<span class="focus-input100"></span>
-				</div>
+                                            <span class="focus-input100"></span>
+                                        </div>
                             
-                            <?php
-            $sql='SELECT `oras_sosire` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_sosire`';
-  $result = $conn->query($sql);
-  ?>
+                            <?php $sql='SELECT `oras_sosire` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_sosire`'; $result = $conn->query($sql); ?>
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Destinatii</span>
 					<div>

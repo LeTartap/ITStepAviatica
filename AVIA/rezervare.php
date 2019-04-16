@@ -47,7 +47,9 @@ function invalidDB() {
     
     
          <div>
-          <form action='rezervare.php' method='GET'>
+             <div class="container-contact100">
+		<div class="wrap-contact100">
+                    <form action='rezervare.php' method='GET'>
                                                 
 
 				<div class="wrap-input100 validate-input" data-validate="Last name is required">
@@ -68,9 +70,19 @@ function invalidDB() {
 					<span class="focus-input100"></span>
 				</div>
                             <input type="hidden" name="IdCursa" value="<?php echo $_GET['IdCursa']; ?>">                            
-                            <input type='submit' />                          
-                            
-                                                
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								Submit
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>                            
+                </div>               
                                                 
           </form>  
                                             
