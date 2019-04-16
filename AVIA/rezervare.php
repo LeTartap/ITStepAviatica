@@ -63,7 +63,7 @@ function invalidDB() {
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate="First name is required">
-					<span class="label-input100">Your First Name</span>
+					<span class="label-input100">CNP</span>
 					<input class="input100" type="text" name="cnp" placeholder="CNP">
 					<span class="focus-input100"></span>
 				</div>

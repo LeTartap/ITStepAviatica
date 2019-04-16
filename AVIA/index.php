@@ -45,60 +45,8 @@ function alertInvalid() {
       die("Connection failed: " . $conn->connect_error);
   }
   ?>    
-    
-        <div class="formular1">
-        <form action="index.php" method='POST' >
-
-            <label for="plecare"> Oras Plecare </label>
-            <br>
-            <?php
-            $sql='SELECT `oras_Plecare` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_Plecare`';
-            $result = $conn->query($sql);
-            ?>
+                    
             
-            <select name = "Plecare">
-                
-                
-                <?php
-                if ($result->num_rows > 0) 
-                    {
-                           while($row = $result->fetch_assoc()) {                                                                        
-                            echo '<option value="'.$row["oras_Plecare"].'">'.$row["oras_Plecare"].'</option>';                                                       
-                        }
-                    }
-                ?>                                                               
-            </select>
-            <br>
-          <?php
-            $sql='SELECT `oras_sosire` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_sosire`';
-  $result = $conn->query($sql);
-  ?>
-            <label> Oras Sosire </label>
-            <br>
-            <select name = "Destinatie">
-                <<?php
-                if ($result->num_rows > 0) 
-                    {
-                        while($row = $result->fetch_assoc()) {                                                                        
-                            echo '<option value="'.$row["oras_sosire"].'">'.$row["oras_sosire"].'</option>';                                                       
-                        }
-                    }
-                ?>            
-            </select>
-            <br>
-            
-            
-            <label>Data </label>
-            <input type="date" name="Data">
-            
-            <button type="submit"  value="Submit"/>
-
-            
-        </form>
-        
-        
-        </div>
-    
     
         <div class="limiter">
                 <div class="container-table100">

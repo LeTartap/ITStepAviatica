@@ -23,8 +23,9 @@
 }
 
 body, html {
-	height: 100%;
 	font-family: sans-serif;
+	height: 100%;
+        
 }
 
 /* ------------------------------------ */
@@ -59,7 +60,13 @@ ul, li {
 input {
 display: table;
 }
-
+.limiter{
+      background: #a64bf4;
+  background: -webkit-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: -o-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: -moz-linear-gradient(45deg, #00dbde, #fc00ff);
+  background: linear-gradient(45deg, #00dbde, #fc00ff);
+}
 textarea {
 
 }
@@ -95,6 +102,9 @@ iframe {
   opacity: 1 !important;
   right: 5px;
 }
+
+
+
 
 .table100 .ps__rail-y::before {
   content: "";
