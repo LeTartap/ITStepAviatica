@@ -42,7 +42,7 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-                        <form class="contact100-form validate-form" action="index.php" method='POST' >
+                    <form class="contact100-form validate-form" action="list.php" method='POST' >
                                 <?php
                                 $sql='SELECT `oras_Plecare` FROM `stepit_claudiu`.`Curse` GROUP BY `oras_Plecare`';
                                 $result = $conn->query($sql);
