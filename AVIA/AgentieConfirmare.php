@@ -108,7 +108,7 @@ $pret = $rowCurse['pret'];
             <div class="container-contact100-form-btn">
                 <div class="wrap-contact100-form-btn">
                     <div class="contact100-form-bgbtn"></div>
-                    <button class="contact100-form-btn" onclick='location.href="AgentieFinalizare.php?Nume=<?php echo $nume?>&Prenume=<?php echo $prenume?>&Cnp=<?php echo $cnp?>&IdCursa=<?php echo $idCursa?>&OrasSosire=<?php echo $orasSosire?>&DataPlecare=<?php echo $dataPlecare?>&Pret=<?php echo pret?>";'>
+                    <button class="contact100-form-btn" onclick='location.href="AgentieFinalizare.php?Nume=<?php echo $nume?>&Prenume=<?php echo $prenume?>&Cnp=<?php echo $cnp?>&IdCursa=<?php echo $idCursa?>&OrasSosire=<?php echo $orasSosire?>&DataPlecare=<?php echo $dataPlecare?>&Pret=<?php echo $pret?>";'>
                         <span>Confirmare <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i></span>
                     </button>
                 </div>

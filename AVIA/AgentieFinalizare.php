@@ -64,8 +64,8 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $idPasager = $row['id'];
 
-$sql = "INSERT INTO `Bilet_cumparat` (id_Pasager, id_vanzator, kg, loc, Pret, id_Cursa, oras_sosire, data_plecare) VALUES ('".$idPasager."', '1', '0', '0', '".$pret."', '".$idCursa."', '".$orasSosire."', '".$dataPlecare."')"; //problema aici la idvanzator
-$conn->query($sql);
+$sql = "INSERT INTO `Bilet_cumparat` (id_Pasager, id_vanzator, kg, loc, Pret, id_Cursa, oras_sosire, data_plecare) VALUES ('".$idPasager."', '2', '0', '0', '".$pret."', '".$idCursa."', '".$orasSosire."', '".$dataPlecare."')"; //problema aici la id vanzator
+$conn->query($sql);     
 ?>
 
         <div class="contact100-form validate-form">
@@ -78,7 +78,7 @@ $conn->query($sql);
             <div class="container-contact100-form-btn">
                 <div class="wrap-contact100-form-btn">
                     <div class="contact100-form-bgbtn"></div>
-                    <button class="contact100-form-btn" onclick='location.href="";'>
+                    <button class="contact100-form-btn" onclick='location.href="index.php";'>
                         <span>Pagina Principala</span>
                     </button>
                 </div>
