@@ -1,4 +1,4 @@
-d
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +37,10 @@ function validDB(){
 function invalidDB() {
   alert("Nu s-a putut face conexiunea cu baza de date!");
 }
+
+function alertInfo(){
+        console.log("console test");
+}
 </script>
 <!--===============================================================================================-->
 </head>
@@ -49,27 +53,33 @@ function invalidDB() {
          <div>
              <div class="container-contact100">
 		<div class="wrap-contact100">
-                    <form action='rezervare.php' method='GET'>
+                    <form action='CompanieList.php' method='GET'>
                                                 
 
-				<div class="wrap-input100 validate-input" data-validate="Last name is required">
-					<span class="label-input100">Your Last Name</span>
-					<input class="input100" type="text" name="nume" placeholder="Enter your last name">
+				<div class="wrap-input100 validate-input" data-validate="Product name is required">
+					<span class="label-input100">Product name</span>
+					<input class="input100" type="text" name="numeProdus" placeholder="Enter produc">
 					<span class="focus-input100"></span>
 				</div>
 
-				<div class="wrap-input100 validate-input" data-validate="First name is required">
-					<span class="label-input100">Your First Name</span>
-					<input class="input100" type="text" name="prenume" placeholder="Enter your first name">
+				<div class="wrap-input100 validate-input" data-validate="Provider name is required">
+					<span class="label-input100">Provider Name</span>
+					<input class="input100" type="text" name="numeFurnizor" placeholder="Enter provider">
 					<span class="focus-input100"></span>
 				</div>
 
-				<div class="wrap-input100 validate-input" data-validate="First name is required">
-					<span class="label-input100">CNP</span>
-					<input class="input100" type="text" name="cnp" placeholder="CNP">
+				<div class="wrap-input100 validate-input" data-validate="Price is required">
+					<span class="label-input100">Price</span>
+					<input class="input100" type="number" name="pret" placeholder="Price">
 					<span class="focus-input100"></span>
 				</div>
-                            <input type="hidden" name="IdCursa" value="<?php echo $_GET['IdCursa']; ?>">                            
+
+                                <div class="wrap-input100 validate-input" data-validate="Amount is required">
+					<span class="label-input100">Amount</span>
+					<input class="input100" type="number" name="cantitate" placeholder="Amount">
+					<span class="focus-input100"></span>
+				</div>
+                            <input type="hidden" name="IdCompanie" value="<?php echo $_GET['idCompanie']; ?>">                            
 
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
@@ -102,22 +112,28 @@ function invalidDB() {
       die("Connection failed: " . $conn->connect_error);
   }
 
-$id = $_GET['IdCursa'];
-$nume=$_GET['nume'];
-$prenume=$_GET['prenume'];
-$cnp=$_GET['cnp'];
 
+$idCompanie = $_GET['IdCompanie'];
+$numeProdus=$_GET['numeProdus'];
+$numeFurnizor=$_GET['numeFurnizor'];
+$pret=$_GET['pret'];
+$cantitate=$_GET['cantitate'];
+
+//echo('<script type="text/javascript"> alertInfo() </script>');
 
 //validare inceput
-if( isset($id) AND isset($nume) AND isset($prenume) AND isset($cnp)) {
+if( isset($idCompanie) AND isset($numeProdus) AND isset($numeFurnizor) AND isset($pret) AND isset($cantitate)) {
   # execute a query and output its results
-if(!(ctype_alpha($nume)&&$nume!="" && ctype_alpha($prenume) && $prenume!="" && ctype_digit($cnp)&& $cnp!=""))
-{
-    echo '<script type="text/javascript"> alertInvalid()</script>';    
-}
-else{    
-    $sql = "INSERT INTO `stepit_claudiu`.`Rezervare` (`IdCursa`, `Nume`, `Prenume`, `Cnp`) 
-            VALUES (".$_GET['IdCursa']." , '".$nume."', '".$prenume."', '".$cnp."');";
+  
+        echo('<script type="text/javascript"> alertInfo() </script>');
+
+ if(!(ctype_alpha($numeProdus) && $numeProdus != "" && ctype_alpha($numeFurnizor) && $numeFurnizor != "" && ctype_digit($pret)&& $pret != "" && ctype_digit($cantitate) && $cantitate != ""))
+ {
+     echo '<script type="text/javascript"> alertInvalid()</script>';    
+ }
+ else{    
+    $sql = "INSERT INTO `stepit_claudiu`.`Stocuri` (`id_Companie`, `denumire_produs`, `denumire_furnizor`, `pret` , `cantitate`) 
+            VALUES (".$_GET['IdCompanie']." , '".$numeProdus."', '".$numeFurnizor."', '".$pret."' , '".$cantitate."');";
 
       $result = $conn->query($sql);
       if($result){
@@ -137,7 +153,7 @@ else{
 
 </tr>
 <?php
-//  }
+//}
 ?>
 
                                    
